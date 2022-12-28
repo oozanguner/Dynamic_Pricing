@@ -108,7 +108,7 @@ def nonparametric_ind_ab_test(dataframe, col, class_col, nonnormally_list):
     similar_avg = []
     for i in range (len (nonnormally_list)):
         for k in range (i + 1, len (nonnormally_list)):
-            ttest_lev, p_value_lev = mannwhitneyu ((dataframe.loc[df[class_col] == nonnormally_list[i], col]),
+            ttest_lev, p_value_lev = mannwhitneyu ((dataframe.loc[dataframe[class_col] == nonnormally_list[i], col]),
                                                    (dataframe.loc[dataframe[class_col] == nonnormally_list[k], col]))
             if p_value_lev < 0.05:
                 different_avg.append ((nonnormally_list[i], nonnormally_list[k]))
